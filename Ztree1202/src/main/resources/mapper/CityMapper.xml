@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buba.dao.CityMapper">
+  	<select id="findCity" resultType="com.buba.bean.City">
+  		select * from city where pid=#{pid}
+  	</select>
+  	<select id="findCh" resultType="int">  	
+  		select count(*) from city where pid=#{pid}
+  	</select>
+  	<insert id="addCity" useGeneratedKeys="true" keyProperty="id">
+  		insert into city (name,pid) values(#{name},#{pid})
+  	</insert>
+  	<update id="updateCity">
+  		update city set name=#{name} where id=#{id}
+  	</update>
+  	<delete id="delCity">
+  		DELETE FROM city WHERE id=#{id}
+  	</delete>
+</mapper>
