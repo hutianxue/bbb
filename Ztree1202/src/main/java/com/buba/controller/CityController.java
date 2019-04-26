@@ -34,6 +34,7 @@ public class CityController {
 		}
 		ci.setIsParent(b);*/
 		List<City> city = cityService.findCity(pi);
+		System.out.println(111);
 		return city;
 		
 	}
