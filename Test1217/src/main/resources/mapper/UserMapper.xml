@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buba.dao.UserMapper">
+	<select id="findAll" resultType="com.buba.bean.User">
+		SELECT `user`.id,
+		`user`.user_name userName,
+		`user`.user_age userAge,
+		`user`.user_money userMoney,
+		dept.dept_name deptName,
+		dept.dept_code deptCode  
+		FROM `user`,dept  
+		WHERE `user`.dept_id=dept.id
+	</select>
+	<select id="findMoney" resultType="com.buba.bean.User">
+		SELECT 
+		avg(`user`.user_money) avgMoney,
+		dept.dept_name deptName
+		FROM `user`,dept  
+		WHERE `user`.dept_id=dept.id
+		GROUP BY `user`.dept_id
+	</select>
+	<select id="findMaxMoney" resultType="com.buba.bean.User">
+		SELECT 
+		max(`user`.user_money) maxMoney,
+		dept.dept_name deptName 
+		FROM `user`,dept  
+		WHERE `user`.dept_id=dept.id
+		GROUP BY `user`.dept_id
+	</select>
+</mapper>

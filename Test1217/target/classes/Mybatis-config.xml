@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration SYSTEM "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!-- 引入外部文件 -->
+	<properties resource="db.properties"></properties>
+ 	<!-- 开启驼峰命名
+ 		数据库  使用下划线表示后一个单词首字母大写
+		java ：注意不要使用下划线命名 -->
+  	<settings>
+  		<setting name="mapUnderscoreToCamelCase" value="true"/>
+  		<setting name="lazyLoadingEnabled" value="true"/>
+  		<setting name="aggressiveLazyLoading" value="false"/>
+  	</settings>
+  	
+	<plugins>
+		<!-- com.github.pagehelper为PageHelper类所在包名 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 使用下面的方式配置参数，后面会有所有的参数介绍 -->
+			<property name="reasonable" value="true" />
+		</plugin>
+	</plugins>
+	
+	
+</configuration>

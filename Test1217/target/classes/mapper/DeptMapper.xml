@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.buba.dao.DeptMapper">
+	<select id="findAllDept" resultType="com.buba.bean.Dept">
+		SELECT 		
+		dept.dept_name deptName,
+		dept.dept_code deptCode,
+		avg(`user`.user_money) avgMoney
+		FROM `user`,dept  
+		WHERE `user`.dept_id=dept.id
+		GROUP BY `user`.dept_id
+	</select>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<context:component-scan base-package="com.buba.web"></context:component-scan>
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/jsps/"></property>
+	<property name="suffix" value=".jsp"></property>
+</bean>
+
+<!-- 处理静态资源 -->
+<mvc:default-servlet-handler/>
+<!-- 注解驱动（使注解再次生效） -->
+<mvc:annotation-driven></mvc:annotation-driven>
+
+<!-- 文件上傳 -->
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!-- 文件上傳格式 -->
+	<property name="defaultEncoding" value="utf-8"></property>
+	<!-- 文件上傳大小 -->
+	<property name="maxUploadSize" value="5000000000"></property>
+</bean>
+<!-- <mvc:interceptors>
+	<mvc:interceptor>
+		<mvc:mapping path="/**"/>
+		<mvc:exclude-mapping path="/**/css/**"/>
+		<mvc:exclude-mapping path="/**/images/**"/>
+		<mvc:exclude-mapping path="/**/common/**"/>
+		<mvc:exclude-mapping path="/**/assets/**"/>
+		<mvc:exclude-mapping path="/**/js/**"/>
+		<mvc:exclude-mapping path="/**/font/**"/>
+		<bean class="com.buba.lanjie.WinePartyHandlerInterceptor"></bean>
+	</mvc:interceptor>
+</mvc:interceptors> -->
+</beans>
